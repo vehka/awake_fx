@@ -1,4 +1,4 @@
--- awake: time changes
+-- awake with send fx: time changes
 -- 2.7.0 @tehn
 -- l.llllllll.co/awake
 --
@@ -30,7 +30,7 @@
 -- *toggle
 -- E2/E3 changes
 
-engine.name = 'PolyPerc'
+engine.name = 'PolyPerc_fx'
 
 hs = include('lib/halfsecond')
 
@@ -344,6 +344,13 @@ function init()
 
   params:add{type="option",id="arc_rotation",name="Arc rotation",
     options={"0","90","180","270"},default=1}
+
+  -- FX send
+  cs_SEND = controlspec.new(0,1,'lin',0.1,0,'',0.1, false)
+  params:add{type="control",id="send_a",controlspec=cs_SEND,
+    action=function(x) engine.send_a(x) end}
+  params:add{type="control",id="send_b",controlspec=cs_SEND,
+    action=function(x) engine.send_b(x) end}
 
   add_pattern_params()
   params:default()
