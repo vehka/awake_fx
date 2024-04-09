@@ -346,7 +346,7 @@ function init()
     options={"0","90","180","270"},default=1}
 
   -- FX send
-  cs_SEND = controlspec.new(0,1,'lin',0.1,0,'',0.1, false)
+  cs_SEND = controlspec.new(0,1,'lin',0.01,0,'',0.01, false)
   params:add{type="control",id="send_a",controlspec=cs_SEND,
     action=function(x) engine.send_a(x) end}
   params:add{type="control",id="send_b",controlspec=cs_SEND,
